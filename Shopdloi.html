@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Dinh Loi - Hệ Thống Bán Acc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { 
+            --primary: #ff4757; --secondary: #3b82f6; --bg-body: #0f0f12; 
+            --bg-sidebar: #13151b; --bg-card: #1c1c1e; --text-main: #ffffff; 
+            --text-sub: #a0a0a0; --border: rgba(255, 255, 255, 0.1); 
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { 
+            background-color: var(--bg-body); color: var(--text-main); 
+            font-family: 'Lexend', sans-serif; margin: 0; padding: 0; overflow-x: hidden;
+        }
+        
+        #snow-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+
+        /* Navbar & Sidebar */
+        .navbar { 
+            display: flex; align-items: center; justify-content: space-between; 
+            padding: 12px 15px; background: rgba(15, 15, 18, 0.95); 
+            border-bottom: 1px solid var(--border); position: fixed; top: 0; width: 100%; z-index: 1000; backdrop-filter: blur(10px);
+        }
+        .sidebar { 
+            position: fixed; top: 0; left: -280px; width: 280px; height: 100%; 
+            background: var(--bg-sidebar); z-index: 1200; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); border-right: 1px solid var(--border); 
+        }
+        .sidebar.active { left: 0; }
+        .sidebar-item { padding: 15px 20px; cursor: pointer; border-left: 3px solid transparent; transition: 0.2s; color: var(--text-sub); }
+        .sidebar-item:hover { background: rgba(255,255,255,0.05); color: white; border-left-color: var(--secondary); }
+        .admin-item { color: #ff4757; font-weight: bold; display: none; }
+
+        /* Main UI */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 15px 20px; position: relative; z-index: 1; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card { background: var(--bg-card); border-radius: 12px; padding: 15px; border: 1px solid var(--border); transition: 0.3s; }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        
+        /* Modals */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .modal-content { background: var(--bg-sidebar); width: 90%; max-width: 400px; border-radius: 15px; padding: 25px; position: relative; border: 1px solid var(--border); animation: zoom 0.3s; }
+        @keyframes zoom { from {transform: scale(0.8);} to {transform: scale(1);} }
+
+        .btn { width: 100%; padding: 12px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-primary { background: var(--secondary); color: white; }
+        .btn-buy { background: var(--primary); color: white; }
+        
+        .input-group { background: #000; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; padding: 0 10px; }
+        .input-group input { background: transparent; border: none; color: white; padding: 12px; width: 100%; font-family: 'Lexend'; }
+        
+        .qr-box { text-align: center; margin-top: 15px; display: none; background: white; padding: 15px; border-radius: 10px; }
+        .qr-box img { width: 100%; max-width: 200px; }
+    </style>
+</head>
+<body>
+
+    <canvas id="snow-canvas"></canvas>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div style="padding: 30px; text-align: center;">
+            <img src="https://i.ibb.co/nqXsfjPB/E623-A016-8-D40-488-A-9-C32-5308-D7-F4-D7-A7.jpg" width="80" style="border-radius: 50%; border: 2px solid var(--secondary);">
+            <h3 style="margin-top: 10px;">Dinh Loi Shop</h3>
+        </div>
+        <div class="sidebar-item" onclick="toggleMenu()"><i class="fa-solid fa-house"></i> Trang Chủ</div>
+        <div class="sidebar-item" onclick="openModal('deposit-modal')"><i class="fa-solid fa-wallet"></i> Nạp Tiền Bank</div>
+        <div id="admin-menu" class="sidebar-item admin-item" onclick="openModal('admin-modal')"><i class="fa-solid fa-user-shield"></i> QUẢN TRỊ VIÊN</div>
+        <div class="sidebar-item" onclick="resetSystem()" style="color: #ff4757;"><i class="fa-solid fa-trash"></i> Reset Dữ Liệu</div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <i class="fa-solid fa-bars" onclick="toggleMenu()" style="cursor:pointer; font-size: 20px;"></i>
+        <div style="font-weight: bold; color: var(--secondary);">
+            <i class="fa-solid fa-coins"></i> <span id="user-balance">0đ</span>
+        </div>
+        <div id="auth-status" onclick="openModal('auth-modal')" style="cursor:pointer; font-size: 14px; background: var(--bg-card); padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border);">
+            Đăng Nhập
+        </div>
+    </nav>
+
+    <div class="container">
+        <div style="background: linear-gradient(90deg, #3b82f6, #2563eb); padding: 20px; border-radius: 15px; margin-bottom: 25px;">
+            <h2 style="margin: 0;">Chào mừng đến với DinhLoi.gt.tc</h2>
+            <p style="font-size: 13px; opacity: 0.9;">Hệ thống bán Acc & Script tự động 24/7</p>
+        </div>
+
+        <h3>SẢN PHẨM MỚI NHẤT</h3>
+        <div class="product-grid" id="product-grid">
+            <!-- Sản phẩm mẫu -->
+            <div class="card">
+                <img src="https://i.postimg.cc/YSBnNjq3/IMG-6228.jpg" width="100%" style="border-radius: 8px;">
+                <h4 style="margin: 10px 0 5px;">Clone FF Level 5</h4>
+                <p style="color: var(--price-yellow); font-weight: 800; margin: 0;">3,000đ</p>
+                <button class="btn btn-buy" onclick="buyItem(3000, 'Clone FF Lv5')">MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Đăng Nhập -->
+    <div id="auth-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 style="text-align: center;">ĐĂNG NHẬP</h3>
+            <div class="input-group"><input type="text" id="username" placeholder="Tên tài khoản"></div>
+            <div class="input-group"><input type="password" id="password" placeholder="Mật khẩu"></div>
+            <p style="font-size: 11px; color: var(--text-sub);">* Nếu chưa có tài khoản, hệ thống sẽ tự động đăng ký mới cho bạn.</p>
+            <button class="btn btn-primary" onclick="handleAuth()">XÁC NHẬN</button>
+            <button class="btn" style="background: transparent; color: white;" onclick="closeModal('auth-modal')">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal Nạp Tiền -->
+    <div id="deposit-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 style="text-align: center;">NẠP TIỀN QUA MBBANK</h3>
+            <div class="input-group"><input type="number" id="deposit-amount" placeholder="Nhập số tiền muốn nạp"></div>
+            <button class="btn btn-primary" onclick="generateVietQR()">TẠO MÃ THANH TOÁN</button>
+            
+            <div id="qr-box" class="qr-box">
+                <img id="qr-img" src="">
+                <p style="color: #000; font-size: 12px; margin-top: 10px;">Nội dung: <b id="qr-content" style="color: red;"></b></p>
+                <p style="color: #666; font-size: 10px;">Vui lòng chuyển đúng nội dung để được cộng tiền.</p>
+            </div>
+            <button class="btn" style="background: transparent; color: white;" onclick="closeModal('deposit-modal')">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal Admin -->
+    <div id="admin-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 style="text-align: center; color: #ff4757;">ADMIN CONTROL</h3>
+            <div class="input-group"><input type="text" id="target-user" placeholder="Tên khách hàng"></div>
+            <div class="input-group"><input type="number" id="add-money" placeholder="Số tiền cộng"></div>
+            <button class="btn btn-primary" style="background: #2ecc71;" onclick="adminAddBalance()">CỘNG TIỀN NGAY</button>
+            <button class="btn" style="background: transparent; color: white;" onclick="closeModal('admin-modal')">Đóng</button>
+        </div>
+    </div>
+
+    <script>
+        // --- THÔNG TIN STK CỦA BẠN ---
+        const CONFIG = {
+            bankId: "MB", 
+            accountNo: "03034132011", 
+            accountName: "PHAM DINH LOI"
+        };
+
+        // --- HỆ THỐNG BIẾN LƯU TRỮ (LOCALSTORAGE) ---
+        let users = JSON.parse(localStorage.getItem('dl_users')) || {};
+        let loggedInUser = localStorage.getItem('dl_current_user') || null;
+
+        window.onload = () => { updateUI(); initSnow(); };
+
+        function handleAuth() {
+            const u = document.getElementById('username').value.trim();
+            const p = document.getElementById('password').value.trim();
+            if(!u || !p) return alert("Vui lòng điền đủ!");
+
+            if(!users[u]) {
+                users[u] = { password: p, balance: 0, role: (u === 'admin' ? 'admin' : 'user') };
+                alert("Đã tạo tài khoản và đăng nhập thành công!");
+            } else {
+                if(users[u].password !== p) return alert("Sai mật khẩu!");
+            }
+
+            loggedInUser = u;
+            localStorage.setItem('dl_current_user', u);
+            localStorage.setItem('dl_users', JSON.stringify(users));
+            closeModal('auth-modal');
+            updateUI();
+        }
+
+        function updateUI() {
+            if(loggedInUser) {
+                document.getElementById('user-balance').innerText = users[loggedInUser].balance.toLocaleString() + 'đ';
+                document.getElementById('auth-status').innerText = "Chào, " + loggedInUser;
+                document.getElementById('auth-status').onclick = logout;
+                
+                if(users[loggedInUser].role === 'admin') {
+                    document.getElementById('admin-menu').style.display = 'block';
+                }
+            }
+        }
+
+        function generateVietQR() {
+            if(!loggedInUser) return openModal('auth-modal');
+            const amount = document.getElementById('deposit-amount').value;
+            if(!amount || amount < 1000) return alert("Nạp tối thiểu 1.000đ");
+
+            const content = "NAP " + loggedInUser.toUpperCase();
+            const url = `https://img.vietqr.io/image/${CONFIG.bankId}-${CONFIG.accountNo}-compact.png?amount=${amount}&addInfo=${content}&accountName=${CONFIG.accountName}`;
+            
+            document.getElementById('qr-img').src = url;
+            document.getElementById('qr-content').innerText = content;
+            document.getElementById('qr-box').style.display = 'block';
+        }
+
+        function adminAddBalance() {
+            const target = document.getElementById('target-user').value.trim();
+            const money = parseInt(document.getElementById('add-money').value);
+            
+            if(users[target]) {
+                users[target].balance += money;
+                localStorage.setItem('dl_users', JSON.stringify(users));
+                alert("Đã cộng " + money.toLocaleString() + "đ cho " + target);
+                updateUI();
+            } else {
+                alert("Không tìm thấy người dùng này!");
+            }
+        }
+
+        function buyItem(price, name) {
+            if(!loggedInUser) return openModal('auth-modal');
+            if(users[loggedInUser].balance < price) return alert("Bạn không đủ tiền, vui lòng nạp thêm!");
+
+            users[loggedInUser].balance -= price;
+            localStorage.setItem('dl_users', JSON.stringify(users));
+            alert("Mua thành công: " + name + "\nSố dư còn lại: " + users[loggedInUser].balance.toLocaleString() + "đ");
+            updateUI();
+        }
+
+        function logout() {
+            if(confirm("Bạn muốn đăng xuất?")) {
+                localStorage.removeItem('dl_current_user');
+                location.reload();
+            }
+        }
+
+        function resetSystem() {
+            if(confirm("CẢNH BÁO: Hành động này sẽ xóa sạch dữ liệu khách hàng và số dư trên máy này!")) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        function initSnow() {
+            const canvas = document.getElementById('snow-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            let particles = [];
+            for(let i=0; i<100; i++) particles.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*3+1, s: Math.random()*1+0.5});
+            function draw() {
+                ctx.clearRect(0,0,canvas.width, canvas.height); ctx.fillStyle = "white"; ctx.beginPath();
+                particles.forEach(p => {
+                    ctx.moveTo(p.x, p.y); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2); // Fix typo small
+                    p.y += p.s; if(p.y > canvas.height) p.y = -5;
+                });
+                ctx.fill(); requestAnimationFrame(draw);
+            }
+            // Fix small typo in loop for snow
+            particles.forEach(p => { p.draw = function() { ctx.moveTo(this.x, this.y); ctx.arc(this.x, this.y, this.r, 0, Math.PI*2); }});
+            function anim() {
+                ctx.clearRect(0,0,canvas.width, canvas.height); ctx.fillStyle="white"; ctx.beginPath();
+                particles.forEach(p => { p.draw(); p.y += p.s; if(p.y > canvas.height) p.y = -5; });
+                ctx.fill(); requestAnimationFrame(anim);
+            }
+            anim();
+        }
+    </script>
+</body>
+</html>
