@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Dinh Loi Store · DinhLoiStore |ESign &amp; KSign iOS</title>
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://dinhloistore.io.vn" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://images.dmca.com" crossorigin="anonymous" />
+  <link rel="dns-prefetch" href="//offeringchewjean.com" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="app.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js" defer="defer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-cpp.min.js" defer="defer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-java.min.js" defer="defer"></script>
+
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+  <meta name="title" content="Dinh Loi Store | DinhLoiStore – Esign &amp; Ksign iOS" />
+  <meta name="description" content="Trang chính chủ của Dinh Loi Store: ESign, KSign, chứng chỉ iOS Free,DNS profile. dinhloistore dinhloistore" />
+  <meta name="keywords" content="dinhloistore, dinhloistore, dinhloistoredns, esign, ksign, esign scarlet, apple certificate, chứng chỉ ios, ipa sign" />
+
+  <meta property="og:title" content="DinhLoiStore | Uy Tín – Chất lượng" />
+  <meta property="og:description" content="Trang chính chủ của Dinh Loi Store : Hack Free Fire Ipa aim proxy " />
+  <meta property="og:image" content="https://dinhloistore.io.vn/img/pf/profile-pic.png" />
+  <meta property="og:url" content="https://dinhloistore.io.vn" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dinh Loi Store | DinhLoiStore – Esign Scarlet &amp; Ksign iOS" />
+  <meta name="twitter:description" content="Trang chính chủ của Dinh Loi Store: ESign, KSign, chứng chỉ iOS Free,DNS profile. dinhloistore dinhloistore" />
+  <meta name="twitter:image" content="https://dinhloistore.io.vn/img/pf/profile-pic.png" />
+
+  <meta name="dmca-site-verification" content="bVJESUtHbW93QWxxWFEwN3VsNDRFQT090" />
+
+  <link rel="icon" type="image/png" href="https://dinhloistore.io.vn/img/pf/ksign.png" />
+  <link rel="shortcut icon" href="https://dinhloistore.io.vn/img/pf/favicon.ico" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dinh Loi Store",
+    "alternateName": ["DinhLoiStore", "DinhLoiStoreDNS", "DinhLoiStore Esign", "DinhLoiStore Ksign"],
+    "url": "https://dinhloistore.io.vn",
+    "logo": "https://dinhloistore.io.vn/img/pf/ksign.png",
+    "sameAs": [
+      "https://t.me/+SpFewJb4liUwODM1",
+      "https://discord.gg/cQjuP9TEp3"
+    ],
+    "description": "Dinh Loi Store cung cấp chứng chỉ iOS, Esign Scarlet, Ksign, dịch vụ ký IPA, Apple Certificate và hỗ trợ Telegram."
+  }
+  </script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar box-shadow" aria-label="Chính">
+      <button class="menu-button" id="menu-button" aria-label="Mở menu" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#projects">Dịch vụ / Liên kết</a></li>
+        <li><a href="#app">Signed App</a></li>
+        <li><a href="#skills">Kỹ năng</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+        <li style="display:flex; width:26px;">
+          <button id="colorMode" class="color-mode" aria-label="Chuyển chế độ màu">
+            <svg width="30" height="30" viewBox="0 0 400 400" role="img" aria-label="Chuyển chủ đề">
+              <circle cx="200" cy="200" r="195" fill="#fff" stroke="#000" stroke-width="10"></circle>
+              <path d="M 200 375 A 175 175 0 0 1 200 25"></path>
+              <path d="M 200 300 A 100 100 0 0 1 200 100" fill="#FFF"></path>
+              <path d="M 200 100 A 100 100 180 0 1 200 300"></path>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="padding profile">
+        <img class="profile-pic box-shadow" src="https://dinhloistore.io.vn/img/pf/favicon.ico" alt="Ảnh đại diện Dinh Loi Store" loading="lazy" decoding="async" />
+        <h1 id="about-title" class="nosnippet" style="margin:0;">Dinh Loi Store
+          <img src="./img/icons/badge.png" alt="Đã xác minh" style="height:28px;" loading="lazy" decoding="async" />
+        </h1>
+        <p>
+          𝗡𝗲̂́𝘂 𝗕𝗮̣𝗻 𝗠𝘂𝗼̂́𝗻 𝗖𝗼́ 𝗡𝗵𝘂 𝗖𝗮̂̀𝘂 𝗠𝘂𝗮 𝗖𝗵𝘂̛́𝗻𝗴 𝗖𝗵𝗶̉ ESign-KSign Để Cài Đặt App 100% Thành Công Chỉ 𝗩𝗼̛́𝗶 𝗚𝗶𝗮́ 60k
+          𝐻𝑎̃𝑦 𝑇𝑟𝑢𝑦 𝐶𝑎̣̂𝑝:
+          <a href="https://cert.dinhloistore.io.vn" target="_blank" rel="noopener">cert.dinhloistore.io.vn</a>
+          dinhloistore dinhloistore
+        </p>
+        <div class="social-buttons" aria-label="Mạng xã hội"></div>
+      </div>
+    </section>
+
+    <section class="projects-section" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="sr-only">Dịch vụ và liên kết</h2>
+      <div class="prj-collum">
+        <div class="project">
+          <h3>Website Bán Chứng Chỉ Tự Động Giá 165k</h3>
+          <a href="https://cert.dinhloistore.io.vn" target="_blank" rel="noopener" aria-label="Mở cert.dinhloistore.io.vn">
+            <img src="./img/icons/redirect.png" alt="" loading="lazy" decoding="async" />
+          </a>
+        </div>
+        <div class="project">
+          <h3>Telegram Channel Notification</h3>
+          <a href="https://t.me/+7bbn-Bk1RCk2NTQ9" target="_blank" rel="noopener" aria-label="Mở kênh Telegram">
+            <img src="./img/icons/redirect.png" alt="" loading="lazy" decoding="async" />
+          </a>
+        </div>
+        <div class="project">
+          <h3>Box Chat Tele Hack Map Mod LQMB</h3>
+          <a href="https://t.me/freemapios" target="_blank" rel="noopener" aria-label="Mở box chat Telegram">
+            <img src="./img/icons/redirect.png" alt="" loading="lazy" decoding="async" />
+          </a>
+        </div>
+        <div class="project">
+          <h3>Join Discord Server</h3>
+          <a href="https://discord.gg/cQjuP9TEp3" target="_blank" rel="noopener" aria-label="Mở Discord">
+            <img src="./img/icons/redirect.png" alt="Discord" loading="lazy" decoding="async" />
+          </a>
+        </div>
+      </div>
+
+      <div class="prj-collum">
+        <div class="project">
+          <h3>Download DNS Profile</h3>
+          <a href="https://github.com/dns-dinhloistore/top-country-stats/releases/download/DNS/dinhloistore.io.vn.mobileconfig">
+            <img src="./img/icons/download.png" alt="Tải DNS Profile" loading="lazy" decoding="async" />
+          </a>
+        </div>
+        <div class="project">
+          <h3>Download Certificate</h3>
+          <a href="./document/DNS/ESignCert.zip" target="_blank" rel="noopener">
+            <img src="./img/icons/download.png" alt="Tải chứng chỉ" loading="lazy" decoding="async" />
+          </a>
+        </div>
+        <div class="project">
+          <h3>Instructions</h3>
+          <a href="https://avieshek.wordpress.com/2024/06/11/how-to-sideload-on-ios/" target="_blank" rel="noopener">
+            <img src="./img/icons/info.png" alt="Xem hướng dẫn" loading="lazy" decoding="async" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <h2 id="app" style="text-align:center;">Signed App</h2>
+    <section class="app-section" aria-label="Danh sách ứng dụng đã ký"></section>
+
+    <div class="line" role="presentation"></div>
+
+    <div class="ios-switch">
+      <div class="ios-switch-track">
+        <button id="btn-ksign" class="active">KSign</button>
+        <button id="btn-esign">ESign</button>
+      </div>
+    </div>
+
+    <div class="ksign-section"></div>
+    <div class="esign-section hidden"></div>
+    <div class="line" role="presentation"></div>
+
+    <section class="skills-section" id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Kỹ năng Lập trình</h2>
+      <div class="skill">
+        <span>HTML/CSS</span>
+        <div class="skill-bar">
+          <div class="skill-fill" data-percent="76%" style="background-color:#e34c26;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Lua</span>
+        <div class="skill-bar">
+          <div class="skill-fill" data-percent="68%" style="background-color:#1f5af9;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>PHP</span>
+        <div class="skill-bar">
+          <div class="skill-fill" data-percent="12%" style="background-color:#89a5f3;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>MySQL</span>
+        <div class="skill-bar">
+          <div class="skill-fill" data-percent="9%" style="background-color:#f29111;"></div>
+        </div>
+      </div>
+    </section>
+
+    <script src="main.js" defer="defer"></script>
+    <script src="app.js" defer="defer"></script>
+    
+    <script src="https://hairsromance.com/g_q7aDmbA6aQh_XP/NVmh3f9uxKIU/zfv1OaVj8ATdn9EoEUL/Sghia89fFxp9UPfhw/EFtHxA8b4FCkRQEKW/olNVY/jXefY8K8Jq3EcEhNQn/tgHzaiCkWC49/dyzeXgu5z"></script>
+    <script src="https://offeringchewjean.com/47/a9/13/47a913b960040fe7926ec0833cfc6151.js"></script>
+    
+    <a href="//www.dmca.com/Protection/Status.aspx?ID=8d6c1d20-15d9-4846-ab00-806948e47695" title="DMCA.com Protection Status" class="dmca-badge">
+      <img src="https://images.dmca.com/Badges/_dmca_premi_badge_5.png?ID=8d6c1d20-15d9-4846-ab00-806948e47695" alt="DMCA.com Protection Status" loading="lazy" decoding="async" />
+    </a>
+    <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js" defer="defer"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-CLK70W4PDR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VFFKYREXJX');
+      gtag('config', 'G-CLK70W4PDR');
+    </script>
+    
+    <script>
+      var atOptions = {
+        'key' : '3434ba1486d99ce41866b861388f09c5',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://hairsromance.com/3434ba1486d99ce41866b861388f09c5/invoke.js"></script>
+  </main>
+</body>
+</html>
